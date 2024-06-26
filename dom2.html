@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>YouTube Subscribe Button</p>
+  <button onclick="Change()
+  // const buttonElement= document.querySelector('.js-subscribe-buttton');
+  // if(buttonElement.innerText==='Subscribe')
+  // {
+  //   buttonElement.innerHTML='Subscribed';
+  // }
+  // else{
+  //   buttonElement.innerHTML='Subscribe';
+  // }//Inline JS Code
+  
+  " class="js-subscribe-buttton">Subscribe</button><br><br>
+  <p>Rock-Paper-Scissors</p><br>
+  <a href="Rock2.html">Click Here</a><br><br>
+  <p>Amazon Shipping Calculator<br>
+  Ordres under $40 = + $10 shipping.<br>
+Orders over $40 = FREE shipping.</p>
+<input placeholder="Cost of order" class="js-cost" >
+<button onclick="calculate()">Calculate</button>
+<p class="js-write"></p>
+
+<script>
+  function Change(){
+    const buttonElement= document.querySelector('.js-subscribe-buttton');
+  if(buttonElement.innerText==='Subscribe')
+  {
+    buttonElement.innerHTML='Subscribed';
+  }
+  else{
+    buttonElement.innerHTML='Subscribe';
+  }
+  }
+ 
+  function calculate(){
+    const inputElement= document.querySelector('.js-cost');
+    let cost=parseInt (inputElement.value);
+if(cost<=40){
+  cost=cost+10;
+  document.querySelector('.js-write').innerHTML= `$${cost}`;
+
+}
+else{
+  document.querySelector('.js-write').innerHTML= `$${cost}`;
+}
+  }
+</script>
+</body>
+</html>
