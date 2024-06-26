@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico">
+  <title>Rock-Paper-Scissors</title>
+</head>
+
+<body>
+  <h3>Rock Paper Scissors</h3>
+  <button onclick="button('Rock')">Rock</button>&nbsp;
+  <button onclick="button('Paper')">Paper</button>&nbsp;
+  <button onclick="button('Scissors')">Scissors</button>
+  <button onclick="Reset()">Reset Score</button>
+  <script>
+    const obj = {
+      wins: 0,
+      loses: 0,
+      ties: 0
+    };
+    localStorage.getItem('score')//since it is the string we need to convert it to an object again
+    JSON.parse(localStorage.getItem('score'))
+    // if(obj===null){
+    //    const obj={
+    //     wins:0,
+    //     loses:0,
+    //     ties:0
+    //   };
+    // }
+    function button(choice) {
+      let cchoice;
+      const result = '';
+      const rnum = (Math.random())
+      if (rnum >= 0 && rnum < 1 / 3) {
+        cchoice = 'Rock'
+      }
+      else if (rnum >= 1 / 3 && rnum < 2 / 3) {
+        cchoice = 'Paper'
+      }
+      else if (rnum >= 2 / 3 && rnum < 1) {
+        cchoice = 'Scissors'
+      }
+      console.log(rnum)
+
+      if ((choice === 'Rock' && cchoice === 'Rock') || (choice === 'Paper' && cchoice === 'Paper') || (choice === 'Scissors' && cchoice === 'Scissors')) {
+        // result='Tied'
+        obj.ties += 1;
+        alert(`You chose ${choice} and computer chose ${cchoice} ,Tied
+       Wins:${obj.wins},Loses:${obj.loses},ties:${obj.ties}`)
+       localStorage.setItem('score',JSON.stringify(obj))
+
+
+      }
+      else if (choice === 'Rock' && (cchoice === 'Paper' || cchoice === 'Scissors')) {
+        obj.wins += 1;
+        alert(`You chose ${choice} and computer chose ${cchoice}, Win
+     Wins:${obj.wins},Loses:${obj.loses},ties:${obj.ties}`)
+     localStorage.setItem('score',JSON.stringify(obj))
+
+      }
+
+      else if (choice === 'Paper' && (cchoice === 'Rock' || cchoice === 'Scissors')) {
+        obj.loses += 1;
+        alert(`You chose ${choice} and computer chose ${cchoice},Lose
+  Wins:${obj.wins},Loses:${obj.loses},ties:${obj.ties}`)
+  localStorage.setItem('score',JSON.stringify(obj))
+      }
+      else if (choice === 'Scissors' && cchoice === 'Rock') {
+        obj.loses += 1;
+        alert(`You chose ${choice} and computer chose ${cchoice},Lose
+   Wins:${obj.wins},Loses:${obj.loses},ties:${obj.ties}`)
+   localStorage.setItem('score',JSON.stringify(obj))
+      }
+      else if (choice === 'Scissors' && cchoice === 'Paper') {
+        obj.wins += 1;
+        alert(`You chose ${choice} and computer chose ${cchoice},Win
+  Wins:${obj.wins},Loses:${obj.loses},ties:${obj.ties}`)
+  localStorage.setItem('score',JSON.stringify(obj))
+      }
+      
+    }
+
+    function Reset(){
+      obj.wins=0
+      obj.loses=0
+      obj.ties=0;
+    }
+  </script>
+</body>
+</html>
